@@ -24,11 +24,7 @@ class Dashboard extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isLoading: state.counter.isLoading,
-  loadFailed: state.counter.loadFailed,
-  inProgress: state.counter.inProgress
-});
+const mapStateToProps = state => state.counter;
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -38,8 +34,6 @@ const mapDispatchToProps = dispatch =>
     },
     dispatch
   );
-
-// TODO: Do I have to bind state & redux to props for every element that eneds it
 
 export default connect(
   mapStateToProps,

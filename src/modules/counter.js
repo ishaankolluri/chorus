@@ -70,8 +70,8 @@ export const fetchData = () => {
         // returns a promise that eventually resolves, but doesn't seem to make it into state
       })
       .then(
-        data => dispatch({ type: "LOAD_DATA_SUCCESS", data }),
-        err => dispatch({ type: "LOAD_DATA_FAILURE", err })
+        data => dispatch({ type: "counter/LOAD_DATA_SUCCESS", data }),
+        err => dispatch({ type: "counter/LOAD_DATA_FAILURE", err })
       );
   };
 };
