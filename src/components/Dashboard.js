@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
 const mapStateToProps = state => ({
   isLoading: state.counter.isLoading,
   loadFailed: state.counter.loadFailed,
-  data: state.counter.data
+  inProgress: state.counter.inProgress
 });
 
 const mapDispatchToProps = dispatch =>

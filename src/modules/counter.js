@@ -14,27 +14,36 @@ const request = new Request(
 // Action Types
 export const LOAD_DATA_FAILURE = "counter/LOAD_DATA_FAILURE";
 export const LOAD_DATA_SUCCESS = "counter/LOAD_DATA_SUCCESS";
+export const DATA_IN_PROGRESS = "counter/DATA_IN_PROGRESS";
 
 // Initial Known Redux State
 const initialState = {
   isLoading: false,
-  loadFailed: false
+  loadFailed: false,
+  inProgress: false
 };
 
 // Reducer handler
 export default (state = initialState, action) => {
   switch (action.type) {
+    case DATA_IN_PROGRESS:
+      return {
+        ...state,
+        inProgress: true
+      };
+
     case LOAD_DATA_SUCCESS:
       return {
         ...state,
-        data: action.data
+        data: action.data,
+        inProgress: false
       };
-    // TODO: I don't see data as a value in props when I call fetchData.
 
     case LOAD_DATA_FAILURE:
       return {
         ...state,
-        loadFailed: true
+        loadFailed: true,
+        inProgress: false
       };
 
     default:
@@ -42,15 +51,23 @@ export default (state = initialState, action) => {
   }
 };
 
+function requestData() {
+  return {
+    type: DATA_IN_PROGRESS
+  };
+}
+
 // Actions
-// should i be sending LOAD_DATA_IN_PROGRESS and then sending a timeout function for data fetching?
 export const fetchData = () => {
-  console.log("Attempting to fetch data");
   return dispatch => {
+    dispatch(requestData());
+
     return fetch(request)
       .then(function(res) {
         res = res.json();
         console.log(res);
+        return res;
+        // returns a promise that eventually resolves, but doesn't seem to make it into state
       })
       .then(
         data => dispatch({ type: "LOAD_DATA_SUCCESS" }, data),
