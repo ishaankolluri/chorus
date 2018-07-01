@@ -1,45 +1,40 @@
-// Exporting actions with a reducer for each action.
+// Set up API information
+const env = require("../env.json");
+
+const request = new Request(
+  `https://api.airtable.com/v0/${env.AIRTABLE_BASE}/${env.AIRTABLE_VIEW}`,
+  {
+    method: "get",
+    headers: new Headers({
+      Authorization: `Bearer ${env.AIRTABLE_API_KEY}`
+    })
+  }
+);
 
 // Action Types
-export const INCREMENT_REQUESTED = "counter/INCREMENT_REQUESTED";
-export const INCREMENT = "counter/INCREMENT";
-export const DECREMENT_REQUESTED = "counter/DECREMENT_REQUESTED";
-export const DECREMENT = "counter/DECREMENT";
+export const LOAD_DATA_FAILURE = "counter/LOAD_DATA_FAILURE";
+export const LOAD_DATA_SUCCESS = "counter/LOAD_DATA_SUCCESS";
 
 // Initial Known Redux State
 const initialState = {
-  count: 0,
-  isIncrementing: false,
-  isDecrementing: false
+  isLoading: false,
+  loadFailed: false
 };
 
 // Reducer handler
 export default (state = initialState, action) => {
   switch (action.type) {
-    case INCREMENT_REQUESTED:
+    case LOAD_DATA_SUCCESS:
       return {
         ...state,
-        isIncrementing: true
+        data: action.data
       };
+    // TODO: I don't see data as a value in props when I call fetchData.
 
-    case INCREMENT:
+    case LOAD_DATA_FAILURE:
       return {
         ...state,
-        count: state.count + 1,
-        isIncrementing: !state.isIncrementing
-      };
-
-    case DECREMENT_REQUESTED:
-      return {
-        ...state,
-        isDecrementing: true
-      };
-
-    case DECREMENT:
-      return {
-        ...state,
-        count: state.count - 1,
-        isDecrementing: !state.isDecrementing
+        loadFailed: true
       };
 
     default:
@@ -47,57 +42,19 @@ export default (state = initialState, action) => {
   }
 };
 
-// Actions - returns a
-//
-//
-export const increment = () => {
+// Actions
+// should i be sending LOAD_DATA_IN_PROGRESS and then sending a timeout function for data fetching?
+export const fetchData = () => {
+  console.log("Attempting to fetch data");
   return dispatch => {
-    dispatch({
-      type: INCREMENT_REQUESTED
-    });
-
-    dispatch({
-      type: INCREMENT
-    });
-  };
-};
-
-export const incrementAsync = () => {
-  return dispatch => {
-    dispatch({
-      type: INCREMENT_REQUESTED
-    });
-
-    return setTimeout(() => {
-      dispatch({
-        type: INCREMENT
-      });
-    }, 3000);
-  };
-};
-
-export const decrement = () => {
-  return dispatch => {
-    dispatch({
-      type: DECREMENT_REQUESTED
-    });
-
-    dispatch({
-      type: DECREMENT
-    });
-  };
-};
-
-export const decrementAsync = () => {
-  return dispatch => {
-    dispatch({
-      type: DECREMENT_REQUESTED
-    });
-
-    return setTimeout(() => {
-      dispatch({
-        type: DECREMENT
-      });
-    }, 3000);
+    return fetch(request)
+      .then(function(res) {
+        res = res.json();
+        console.log(res);
+      })
+      .then(
+        data => dispatch({ type: "LOAD_DATA_SUCCESS" }, data),
+        err => dispatch({ type: "LOAD_DATA_FAILURE" }, err)
+      );
   };
 };

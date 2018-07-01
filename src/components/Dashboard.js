@@ -2,56 +2,44 @@ import React from "react";
 import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync
-} from "../modules/counter";
+import { fetchData } from "../modules/counter";
 
-const Dashboard = props => (
-  <div>
-    <h1>Home</h1>
-    <p>Count: {props.count}</p>
-
-    <p>
-      <button onClick={props.increment} disabled={props.isIncrementing}>
-        Increment
-      </button>
-      <button onClick={props.incrementAsync} disabled={props.isIncrementing}>
-        Increment Async
-      </button>
-    </p>
-    <p>
-      <button onClick={props.decrement} disabled={props.isDecrementing}>
-        Decrement
-      </button>
-      <button onClick={props.decrementAsync} disabled={props.isDecrementing}>
-        Decrement Async
-      </button>
-    </p>
-  </div>
-);
+class Dashboard extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Welcome to Chorus</h1>
+        <p>
+          <button onClick={() => this.props.fetchData()}>
+            Try and fetch data
+          </button>
+        </p>
+        <p>
+          <button onClick={() => this.props.changePage()}>
+            Go to about page via redux
+          </button>
+        </p>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
-  count: state.counter.count,
-  isIncrementing: state.counter.isIncrementing,
-  isDecrementing: state.counter.isDecrementing
+  isLoading: state.counter.isLoading,
+  loadFailed: state.counter.loadFailed,
+  data: state.counter.data
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      increment,
-      incrementAsync,
-      decrement,
-      decrementAsync,
+      fetchData,
       changePage: () => push("/about-us")
     },
     dispatch
   );
 
-// TODO: Can I pass this as "...props" to the page that arrives after the push ^
+// TODO: Do I have to bind state & redux to props for every element that eneds it
 
 export default connect(
   mapStateToProps,
