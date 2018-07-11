@@ -81,9 +81,7 @@ export const fetchData = table => {
     return fetch(request)
       .then(function(res) {
         res = res.json();
-        console.log(res);
         return res;
-        // returns a promise that eventually resolves, but doesn't seem to make it into state
       })
       .then(
         data =>
