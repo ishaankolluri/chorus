@@ -9,11 +9,10 @@ import SingleView from "./SingleView";
 
 class App extends React.Component {
   componentWillMount() {
-    console.log("mounting");
-    const items = this.props.fetchData("item");
-    const sessions = this.props.fetchData("session");
-    const responses = this.props.fetchData("response");
-    const contact = this.props.fetchData("contact");
+    const topic = this.props.fetchData("topic");
+    // const sessions = this.props.fetchData("session");
+    // const responses = this.props.fetchData("response");
+    // const contact = this.props.fetchData("contact");
   }
 
   render() {

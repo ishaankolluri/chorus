@@ -1,5 +1,6 @@
 // Set up API information
-const env = require("../env.json");
+// const env = require("../env.json");
+console.log(process.env);
 
 // Action Types
 export const LOAD_DATA_FAILURE = "counter/LOAD_DATA_FAILURE";
@@ -48,13 +49,26 @@ function requestData() {
   };
 }
 
+// const composeRequest = table => {
+//   const request = new Request(
+//     `https://api.airtable.com/v0/${env.AIRTABLE_BASE}/${table}`,
+//     {
+//       method: "get",
+//       headers: new Headers({
+//         Authorization: `Bearer ${env.AIRTABLE_API_KEY}`
+//       })
+//     }
+//   );
+//   return request;
+// };
+
 const composeRequest = table => {
   const request = new Request(
-    `https://api.airtable.com/v0/${env.AIRTABLE_BASE}/${table}`,
+    `https://api.airtable.com/v0/${process.env.REACT_APP_BASE}/${table}`,
     {
       method: "get",
       headers: new Headers({
-        Authorization: `Bearer ${env.AIRTABLE_API_KEY}`
+        Authorization: `Bearer ${process.env.REACT_APP_KEY}`
       })
     }
   );

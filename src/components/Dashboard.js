@@ -1,10 +1,12 @@
 import React from "react";
 
+import { Title } from "../styles";
+
 class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome to Chorus</h1>
+        <Title>Welcome to Chorus</Title>
         <p>This is the dashboard.</p>
       </div>
     );
