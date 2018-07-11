@@ -5,7 +5,7 @@
   "dependencies": {
     "dotenv": "^6.0.0",
     "inter-ui": "^2.5.1",
-    "react": "^16.2.0",
+    "react": "^16.4.1",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",

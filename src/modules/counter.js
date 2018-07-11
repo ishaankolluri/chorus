@@ -1,8 +1,5 @@
-// Set up API information
-// const env = require("../env.json");
-console.log(process.env);
-
 // Action Types
+
 export const LOAD_DATA_FAILURE = "counter/LOAD_DATA_FAILURE";
 export const LOAD_DATA_SUCCESS = "counter/LOAD_DATA_SUCCESS";
 export const DATA_IN_PROGRESS = "counter/DATA_IN_PROGRESS";
