@@ -1,24 +1,53 @@
 import React from "react";
 
-import { Title } from "../styles";
+import DashboardRow from "./DashboardRow";
+
+import { Subtitle, Text, Title, TableHeaderText } from "../textStyles";
+import {
+  Header,
+  Table,
+  TableHeader,
+  TableRow,
+  TableColumn
+} from "../containerStyles";
 
 class Dashboard extends React.Component {
-  renderTopicRow(i, topic) {
-    return <p key={i}>{topic}</p>;
+  sortById(topics) {
+    return topics.sort(function(a, b) {
+      return a.fields.id - b.fields.id;
+    });
+  }
+  renderTopicRow(topic, index) {
+    return <DashboardRow key={index} topic={topic} />;
   }
 
   render() {
-    const topics = this.props.topic.records;
-    console.log(topics);
-
     if (!this.props.topic) {
-      return <p>Loading...</p>;
+      return <Text>Loading...</Text>;
     }
     return (
       <div>
-        <Title>Welcome to Chorus</Title>
-        <p>This is the dashboard.</p>
-        {/* {this.topics.map((i, topic) => this.renderTopicRow(i, topic))} */}
+        <Header>
+          <Title>Project Dashboard</Title>
+          <Subtitle>UHS Implementation</Subtitle>
+        </Header>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHeaderText>ALARMS</TableHeaderText>
+              <TableHeaderText>TOPIC</TableHeaderText>
+              <TableHeaderText>DUE DATE</TableHeaderText>
+              <TableHeaderText>STATUS</TableHeaderText>
+              <TableHeaderText>RESPONSES</TableHeaderText>
+              <TableHeaderText>TEAM OWNER</TableHeaderText>
+            </TableRow>
+          </TableHeader>
+          <tbody>
+            {this.sortById(this.props.topic.records).map((topic, index) =>
+              this.renderTopicRow(topic, index)
+            )}
+          </tbody>
+        </Table>
       </div>
     );
   }

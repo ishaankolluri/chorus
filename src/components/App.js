@@ -5,7 +5,9 @@ import { connect } from "react-redux";
 
 import { fetchData } from "../modules/counter";
 import Dashboard from "./Dashboard";
-import SingleView from "./SingleView";
+import Results from "./Results";
+
+import { Container, Nav, Page } from "../containerStyles";
 
 class App extends React.Component {
   componentWillMount() {
@@ -17,20 +19,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <header>
+      <Page>
+        <Nav>
           <Link to="/">Home</Link>
           <Link to="/about-us">About</Link>
-        </header>
-        <main>
+        </Nav>
+        <Container>
           <Route exact path="/" render={() => <Dashboard {...this.props} />} />
           <Route
-            exact
-            path="/:itemId"
-            render={() => <SingleView {...this.props} />}
+            path="/:topicId"
+            render={({ match }) => <Results {...this.props} match={match} />}
           />
-        </main>
-      </div>
+        </Container>
+      </Page>
     );
   }
 }
