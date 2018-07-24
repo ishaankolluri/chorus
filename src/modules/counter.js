@@ -46,19 +46,6 @@ function requestData() {
   };
 }
 
-// const composeRequest = table => {
-//   const request = new Request(
-//     `https://api.airtable.com/v0/${env.AIRTABLE_BASE}/${table}`,
-//     {
-//       method: "get",
-//       headers: new Headers({
-//         Authorization: `Bearer ${env.AIRTABLE_API_KEY}`
-//       })
-//     }
-//   );
-//   return request;
-// };
-
 const composeRequest = table => {
   const request = new Request(
     `https://api.airtable.com/v0/${process.env.REACT_APP_BASE}/${table}`,
@@ -70,6 +57,34 @@ const composeRequest = table => {
     }
   );
   return request;
+};
+
+// Group API Call
+export const fetchAllData = tableList => {
+  return dispatch => {
+    dispatch(requestData);
+    const promises = [];
+    for (let index = 0; index < tableList.length; index++) {
+      const request = composeRequest(tableList[index]);
+      const promise = fetch(request)
+        .then(function(res) {
+          res = res.json();
+          return res;
+        })
+        .then(
+          data => {
+            dispatch({
+              type: "counter/LOAD_DATA_SUCCESS",
+              data,
+              payType: tableList[index]
+            });
+          },
+          err => dispatch({ type: "counter/LOAD_DATA_FAILURE", err })
+        );
+      promises.push(promise);
+    }
+    return Promise.all(promises);
+  };
 };
 
 // Actions
