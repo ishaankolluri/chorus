@@ -3,14 +3,18 @@ import styled from "styled-components";
 // App level CSS
 
 export const Page = styled.div`
-  background: #f4f6f8;
+  background: ${props => props.color};
   padding-bottom: 100px;
+  padding-top: 100px;
 `;
 
 export const Nav = styled.div`
   background-color: #1c496d;
   margin-bottom: 10px;
   height: 72px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 `;
 
 // Nav level CSS
@@ -96,6 +100,7 @@ export const Table = styled.table`
   border-collapse: collapse;
   background-color: #ffffff;
   box-shadow: 1px 1px 1px 1px #d8d8d8;
+  z-index: -1;
 `;
 
 export const TableHeader = styled.thead`

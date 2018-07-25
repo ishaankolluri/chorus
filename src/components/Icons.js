@@ -11,9 +11,14 @@ import Logo from "../img/logo.svg";
 import Search from "../img/search.svg";
 import Male from "../img/Male.png";
 import Female from "../img/Female.png";
+import Back from "../img/back.svg";
 
 export const ArrowBothIcon = () => {
   return <IconSmall src={ArrowBoth} />;
+};
+
+export const BackIcon = () => {
+  return <IconLarge src={Back} />;
 };
 
 export const ArrowDownIcon = () => {
@@ -73,6 +78,7 @@ const IconMedium = IconSmall.extend`
 const IconLarge = IconSmall.extend`
   width: 20px;
   height: 20px;
+  justify-content: center;
 `;
 
 const IconLogo = IconSmall.extend`

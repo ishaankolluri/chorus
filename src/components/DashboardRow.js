@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import {
   TableColumn,
@@ -131,7 +132,14 @@ class DashboardRow extends React.Component {
         <NotificationColumn>{this.notification()}</NotificationColumn>
         <NamedColumn> {topic.fields.name}</NamedColumn>
         <TableColumn>{this.deadline()}</TableColumn>
-        <TableColumn>{this.status()}</TableColumn>
+        <TableColumn>
+          <Link
+            to="/results"
+            style={{ textDecoration: "none", position: "relative" }}
+          >
+            {this.status()}
+          </Link>
+        </TableColumn>
         <TableColumn>{this.progress()}</TableColumn>
         <TableColumn>
           <FemaleIcon />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
@@ -7,17 +7,9 @@ import { fetchAllData } from "../modules/counter";
 import Dashboard from "./Dashboard";
 import Results from "./Results";
 
-import {
-  Container,
-  Nav,
-  NavContent,
-  NavItem,
-  ExpandedNav,
-  Page,
-  NavProfile,
-  Copyright
-} from "../containerStyles";
-import { LogoIcon, ChevronDownIcon, FemaleIcon } from "./Icons";
+import { Copyright } from "../containerStyles";
+
+import Navbar from "./Navbar";
 
 class App extends React.Component {
   componentWillMount() {
@@ -26,35 +18,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <Page>
-        <Nav>
-          <NavContent>
-            <LogoIcon />
-            <NavItem>Tracker</NavItem>
-            <NavItem>Sessions</NavItem>
-            <NavItem>
-              Resources <ChevronDownIcon color="ffffff" />
-            </NavItem>
-            <ExpandedNav>
-              North Hills Clinic <ChevronDownIcon color="ffffff" />
-            </ExpandedNav>
-            <NavProfile>
-              <FemaleIcon />
-            </NavProfile>
-          </NavContent>
-        </Nav>
-        <Container>
+      <div>
+        <Navbar />
+        <Switch>
           <Route exact path="/" render={() => <Dashboard {...this.props} />} />
           <Route
-            path="/:topicId"
+            path="/results"
             render={({ match }) => <Results {...this.props} match={match} />}
           />
-        </Container>
+        </Switch>
         <Copyright>
           © 2018 Allscripts Healthcare, LLC and/or its affiliates. All Rights
           Reserved.
         </Copyright>
-      </Page>
+      </div>
     );
   }
 }

@@ -12,6 +12,8 @@ import {
   ExpansionText
 } from "../textStyles";
 import {
+  Page,
+  Container,
   Header,
   HeaderRow,
   Table,
@@ -67,64 +69,68 @@ class Dashboard extends React.Component {
       return <Text>Loading...</Text>;
     }
     return (
-      <div>
-        <Header>
-          <TitleDiv>
-            <Title>Project Dashboard</Title>
-            <Subtitle>UHS Implementation</Subtitle>
-          </TitleDiv>
-          <RightTitleDiv>
-            <TitleRight>79 days</TitleRight>
-            <SubtitleRight>until go live</SubtitleRight>
-          </RightTitleDiv>
-        </Header>
-        <StatisticsContainer>
-          <Statistics
-            type="Negative"
-            info="2"
-            metric="DECISION TOPICS"
-            status="overdue"
-          />
-          <Statistics
-            type="Neutral"
-            info="13"
-            metric="OUT OF 24 RESPONSES"
-            status="received"
-          />
-          <Statistics
-            type="Positive"
-            info="11%"
-            metric="DECISION TOPICS"
-            status="started"
-          />
-          <FilterButton />
-          <SearchBar />
-          <ExportButton />
-          <HelpButton />
-        </StatisticsContainer>
-        <Table>
-          <TableHeader>
-            <HeaderRow>
-              <TableHeaderText> </TableHeaderText>
-              <TableHeaderText>TOPIC</TableHeaderText>
-              <TableHeaderText>
-                DUE DATE <ArrowBothIcon />
-              </TableHeaderText>
-              <TableHeaderText>STATUS</TableHeaderText>
-              <TableHeaderText>RESPONSES</TableHeaderText>
-              <TableHeaderText>TEAM OWNER</TableHeaderText>
-            </HeaderRow>
-          </TableHeader>
-          <tbody>
-            {this.sortById(this.props.topic.records).map((topic, index) =>
-              this.renderTopicRow(topic, index)
-            )}
-            <TableRow>
-              <ExpansionText colSpan={6}>Showing 19 of 19 items</ExpansionText>
-            </TableRow>
-          </tbody>
-        </Table>
-      </div>
+      <Page color="#f4f6f8">
+        <Container>
+          <Header>
+            <TitleDiv>
+              <Title>Project Dashboard</Title>
+              <Subtitle>UHS Implementation</Subtitle>
+            </TitleDiv>
+            <RightTitleDiv>
+              <TitleRight>79 days</TitleRight>
+              <SubtitleRight>until go live</SubtitleRight>
+            </RightTitleDiv>
+          </Header>
+          <StatisticsContainer>
+            <Statistics
+              type="Negative"
+              info="2"
+              metric="DECISION TOPICS"
+              status="overdue"
+            />
+            <Statistics
+              type="Neutral"
+              info="13"
+              metric="OUT OF 24 RESPONSES"
+              status="received"
+            />
+            <Statistics
+              type="Positive"
+              info="11%"
+              metric="DECISION TOPICS"
+              status="started"
+            />
+            <FilterButton />
+            <SearchBar />
+            <ExportButton />
+            <HelpButton />
+          </StatisticsContainer>
+          <Table>
+            <TableHeader>
+              <HeaderRow>
+                <TableHeaderText> </TableHeaderText>
+                <TableHeaderText>TOPIC</TableHeaderText>
+                <TableHeaderText>
+                  DUE DATE <ArrowBothIcon />
+                </TableHeaderText>
+                <TableHeaderText>STATUS</TableHeaderText>
+                <TableHeaderText>RESPONSES</TableHeaderText>
+                <TableHeaderText>TEAM OWNER</TableHeaderText>
+              </HeaderRow>
+            </TableHeader>
+            <tbody>
+              {this.sortById(this.props.topic.records).map((topic, index) =>
+                this.renderTopicRow(topic, index)
+              )}
+              <TableRow>
+                <ExpansionText colSpan={6}>
+                  Showing 19 of 19 items
+                </ExpansionText>
+              </TableRow>
+            </tbody>
+          </Table>
+        </Container>
+      </Page>
     );
   }
 }
