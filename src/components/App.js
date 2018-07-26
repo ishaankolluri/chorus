@@ -1,35 +1,36 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { fetchData } from "../modules/counter";
+import { fetchAllData } from "../modules/counter";
 import Dashboard from "./Dashboard";
-import SingleView from "./SingleView";
+import Results from "./Results";
+
+import { Copyright } from "../containerStyles";
+
+import Navbar from "./Navbar";
 
 class App extends React.Component {
   componentWillMount() {
-    const topic = this.props.fetchData("topic");
-    // const sessions = this.props.fetchData("session");
-    // const responses = this.props.fetchData("response");
-    // const contact = this.props.fetchData("contact");
+    this.props.fetchAllData(["topic", "decision", "contact", "result"]);
   }
 
   render() {
     return (
       <div>
-        <header>
-          <Link to="/">Home</Link>
-          <Link to="/about-us">About</Link>
-        </header>
-        <main>
+        <Navbar />
+        <Switch>
           <Route exact path="/" render={() => <Dashboard {...this.props} />} />
           <Route
-            exact
-            path="/:itemId"
-            render={() => <SingleView {...this.props} />}
+            path="/results"
+            render={({ match }) => <Results {...this.props} match={match} />}
           />
-        </main>
+        </Switch>
+        <Copyright>
+          © 2018 Allscripts Healthcare, LLC and/or its affiliates. All Rights
+          Reserved.
+        </Copyright>
       </div>
     );
   }
@@ -40,7 +41,7 @@ const mapStateToProps = state => state.counter;
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      fetchData
+      fetchAllData
     },
     dispatch
   );

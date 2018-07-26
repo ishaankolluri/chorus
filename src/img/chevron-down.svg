@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons / Chevron1 / Down</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M21.7136121,8.66874532 L12.6880865,17.6942709 C12.3063316,18.0759105 11.6875068,18.0759105 11.3057011,17.6942201 L2.27442568,8.66284295 C1.90394028,8.27925109 1.90923874,7.66951264 2.28633431,7.29241706 C2.66342989,6.91532149 3.27316834,6.91002303 3.66266257,7.28630911 L11.9969192,15.6205658 L20.3312267,7.28625828 C20.6108163,7.00675306 21.0312282,6.9231541 21.3964792,7.07443265 C21.7616641,7.22568378 21.9998289,7.5819566 21.9999996,7.97721056 C22.0002324,8.23686309 21.8969912,8.48590931 21.7136121,8.66874532 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons-/-Chevron1-/-Down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#222222" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="00.-Style-/-Color-/-Black-/-Warm-/-800" mask="url(#mask-2)" fill="#464646">
+            <rect id="Color-/-Black-Warm-/-800" x="0" y="0" width="24" height="24"></rect>
+        </g>
+    </g>
+</svg>
