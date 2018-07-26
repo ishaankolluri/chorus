@@ -1,5 +1,6 @@
 import React from "react";
 
+import Decision from "./Decision";
 import { Text } from "../textStyles";
 
 import StatusBar from "./StatusBar";
@@ -10,7 +11,37 @@ import {
 } from "../resultContainerStyles";
 import { Header, BHeader, CHeader, Body } from "../resultTextStyles";
 
+import Overlay from "../img/Overlay.png";
+
 class Results extends React.Component {
+  sortById(decisions) {
+    return decisions.sort(function(a, b) {
+      return a.fields.id - b.fields.id;
+    });
+  }
+
+  decisions = () => {
+    const topic = this.props.topic.records.find(
+      record => record.fields.id === 3
+    ); // Patient Timeline
+    const decisions = this.props.decision.records.filter(decision => {
+      return decision.fields.topic_id === topic.fields.id;
+    });
+    const results = this.props.result.records.filter(result => {
+      return result.fields.topic_id === topic.fields.id;
+    });
+    const contacts = this.props.contact.records;
+    return this.sortById(decisions).map((decision, index) => {
+      // Create [{decision}, [{result},{result}...]] array for each decision
+      const feedback = results.filter(result => {
+        return result.fields.decision_id === decision.fields.id;
+      });
+      const response = [decision, feedback];
+      // console.log(response);
+      return <Decision key={index} response={response} contacts={contacts} />;
+    });
+  };
+
   render() {
     const isLoading =
       !this.props.topic ||
@@ -45,6 +76,22 @@ class Results extends React.Component {
                 patient’s history, such as specific Health Issues and Providers
                 who treated, within your healthcare network.
               </Body>
+              <div style={{ margin: "auto" }}>
+                <img
+                  style={{
+                    paddingTop: "20px",
+                    display: "block",
+                    margin: "auto",
+                    width: "780px"
+                  }}
+                  src={Overlay}
+                  alt="Feature Walkthrough"
+                />
+              </div>
+            </Section>
+            <Section>
+              <Header>Decision Overview</Header>
+              {this.decisions()}
             </Section>
           </ProposalContainer>
         </ResultsPage>
@@ -56,17 +103,18 @@ class Results extends React.Component {
 class Detail extends React.Component {
   participants = () => {
     const contacts = this.props.contacts.slice(0, 3);
-    console.log(contacts);
     const participants = contacts.map((contact, index) => {
       return <Body key={index}>{contact.fields.name}</Body>;
     });
-    console.log(participants);
     return participants;
   };
 
   render() {
     return (
       <div>
+        <div
+          style={{ paddingLeft: "120px", paddingRight: "120px", width: "100%" }}
+        />
         <Section>
           <div>
             <BHeader>Responses</BHeader>

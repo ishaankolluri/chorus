@@ -21,8 +21,7 @@ import {
   TableRow,
   TitleDiv,
   RightTitleDiv,
-  StatisticsContainer,
-  QueryDiv
+  StatisticsContainer
 } from "../containerStyles";
 
 import { ArrowBothIcon } from "./Icons";

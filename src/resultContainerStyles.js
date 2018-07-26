@@ -9,6 +9,7 @@ export const Status = styled.div`
   background-color: #ffffff;
   height: 48px;
   width: 100%;
+  margin: auto;
   position: fixed;
   top: 72px;
   font-family: "Inter UI";
@@ -16,8 +17,7 @@ export const Status = styled.div`
   color: #6f7378;
   font-weight: 700;
   line-height: 48px;
-  padding: 0px 210px 0px 210px;
-  text-align: center;
+  ${"" /* padding: 0px 210px 0px 210px; */} text-align: center;
 `;
 
 export const StatusDiv = styled.div`
@@ -43,9 +43,24 @@ export const ProposalContainer = styled.div`
   background-color: #ebf0f6;
   margin: auto;
   padding: 56px 104px;
+  background-color: #ffffff;
 `;
+//
 
 export const Section = styled.div`
-  padding: 20px 0px 60px 0px;
+  padding: 20px 0px 40px 0px;
   width: 100%;
+`;
+
+export const SmallSection = Section.extend`
+  padding: 20px 0px;
+`;
+
+export const InfoDiv = Section.extend``;
+
+export const ResultsBar = styled.div`
+  height: 24px;
+  background-color: ${props => props.color};
+  width: ${props => props.percentage}%;
+  display: inline-block;
 `;

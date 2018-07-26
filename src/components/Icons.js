@@ -70,10 +70,10 @@ const IconSmall = styled.img`
   }
 `;
 
-const IconMedium = IconSmall.extend`
-  width: 15px;
-  height: 20px;
-`;
+// const IconMedium = IconSmall.extend`
+//   width: 15px;
+//   height: 20px;
+// `;
 
 const IconLarge = IconSmall.extend`
   width: 20px;

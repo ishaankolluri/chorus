@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Results from "./components/Results";
 
 export const TextButton = styled.div`
   font-family: "Inter UI";
@@ -55,4 +56,46 @@ export const Body = styled.p`
   font-weight: 300;
   color: #464646;
   margin: 0 auto;
+`;
+
+export const List = styled.ul`
+  font-family: "Inter UI";
+  font-size: 14px;
+  line-height: 25px;
+  color: #464646;
+  font-weight: 300;
+`;
+
+export const GraphHeader = styled.div`
+  font-family: "Inter UI";
+  width: 100%;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: #777677;
+  margin-bottom: 30px;
+`;
+
+export const CommentHeader = GraphHeader.extend`
+  margin-bottom: 10px;
+`;
+
+export const ResultsInfo = styled.div`
+  text-align: right;
+  font-family: "Inter UI";
+  font-size: 14px;
+  display: inline;
+  font-weight: 400;
+`;
+
+export const Tally = ResultsInfo.extend`
+  text-align: left;
+  color: #464646;
+`;
+
+export const Commenter = styled.span`
+  font-family: "Inter UI";
+  font-size: 14px;
+  font-weight: 700
+  color: #5392FF;
 `;

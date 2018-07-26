@@ -19,7 +19,7 @@ import {
 
 import { OverdueText, CountText } from "../textStyles";
 
-import { MaleIcon, FemaleIcon } from "./Icons";
+import { FemaleIcon } from "./Icons";
 
 const moment = require("moment");
 

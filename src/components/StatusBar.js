@@ -14,20 +14,22 @@ class StatusBar extends React.Component {
   render() {
     return (
       <Status>
-        <StatusDiv>
-          <BackIcon />
-        </StatusDiv>
-        <StatusDiv>Decision Summary</StatusDiv>
-        <StatusDiv>
-          <StatusButton>Published</StatusButton>
-        </StatusDiv>
-        <ActionDiv>
-          <TextButton>Edit</TextButton>
-        </ActionDiv>
-        <ActionDiv>
-          <TextButton>Share</TextButton> &nbsp;&nbsp;<ChevronDownIcon />
-        </ActionDiv>
-        <StatusAction>Finalize</StatusAction>
+        <div style={{ width: "70%", margin: "auto" }}>
+          <StatusDiv>
+            <BackIcon />
+          </StatusDiv>
+          <StatusDiv>Decision Summary</StatusDiv>
+          <StatusDiv>
+            <StatusButton>Published</StatusButton>
+          </StatusDiv>
+          <ActionDiv>
+            <TextButton>Edit</TextButton>
+          </ActionDiv>
+          <ActionDiv>
+            <TextButton>Share</TextButton> &nbsp;&nbsp;<ChevronDownIcon />
+          </ActionDiv>
+          <StatusAction>Finalize</StatusAction>
+        </div>
       </Status>
     );
   }
