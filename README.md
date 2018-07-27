@@ -17,5 +17,5 @@ The live demo can be found [here](www.allscripts-chorus.herokuapp.com).
 
 ## Backlog
 
-- The custom CSS needs refactoring and work to cater to the needs of the design.
-- Create an actual MySQL / PostgreSQL database and wrap Apollo GraphQL around it.
+- The custom CSS needs more work. A framework was not used, and something like [Bootstrap](www.getbootstrap.com) or [Skeleton](www.getskeleton.com)
+- Create a MySQL / PostgreSQL database and wrap Apollo GraphQL around it.
