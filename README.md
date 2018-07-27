@@ -13,7 +13,7 @@ This project is a rough programmed prototype for Allscripts Healthcare Solutions
 
 ## Live Demo
 
-The live demo can be found at www.allscripts-chorus.herokuapp.com.
+The live demo can be found [here](www.allscripts-chorus.herokuapp.com).
 
 ## Backlog
 
