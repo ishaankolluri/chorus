@@ -11,6 +11,18 @@ This project is a rough programmed prototype for Allscripts Healthcare Solutions
 [Airtable](https://www.airtable.com) is a database that operates like a spreadsheet but exposes a REST API for most operations. This was used to build the schema/model of an EHR implementation and connect it with key individuals involved.
 
 
+## How to run the code
+
+### Requirements
+- npm (node package manager)
+
+### Directions
+- `cd` into the directory.
+- Run `npm install`
+- Run `npm start`
+- Go to `localhost: 3000`
+- See `localhost:3000/results` for the other view.
+
 ## Live Demo
 
 The live demo can be found [here](https://www.allscripts-chorus.herokuapp.com).
