@@ -8,14 +8,14 @@ This project is a rough programmed prototype for Allscripts Healthcare Solutions
 - styled-components
 
 ## Datastore
-[Airtable](www.airtable.com) is a database that operates like a spreadsheet but exposes a REST API for most operations. This was used to build the schema/model of an EHR implementation and connect it with key individuals involved.
+[Airtable](https://www.airtable.com) is a database that operates like a spreadsheet but exposes a REST API for most operations. This was used to build the schema/model of an EHR implementation and connect it with key individuals involved.
 
 
 ## Live Demo
 
-The live demo can be found [here](www.allscripts-chorus.herokuapp.com).
+The live demo can be found [here](https://www.allscripts-chorus.herokuapp.com).
 
 ## Backlog
 
-- The custom CSS needs more work. A framework was not used, and [Bootstrap](www.getbootstrap.com) or [Skeleton](www.getskeleton.com) would have functioned better.
+- The custom CSS needs more work. A framework was not used, and [Bootstrap](https://www.getbootstrap.com) or [Skeleton](https://www.getskeleton.com) would have functioned better.
 - Create a MySQL / PostgreSQL database and wrap Apollo GraphQL around it.
