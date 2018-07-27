@@ -8,7 +8,7 @@ This project is a rough programmed prototype for Allscripts Healthcare Solutions
 - styled-components
 
 ## Datastore
-(Airtable)[www.airtable.com] is a database that operates like a spreadsheet but exposes a REST API for most operations. This was used to build the schema/model of an EHR implementation and connect it with key individuals involved.
+[Airtable](www.airtable.com) is a database that operates like a spreadsheet but exposes a REST API for most operations. This was used to build the schema/model of an EHR implementation and connect it with key individuals involved.
 
 
 ## Live Demo
